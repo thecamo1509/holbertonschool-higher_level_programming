@@ -22,31 +22,18 @@ int list_len(listint_t *head)
 int is_palindrome(listint_t **head)
 {
 	listint_t *ti = *head;
-	listint_t *ts = *head;
+	char array[9999];
 	int i = 1, j, len = 0;
 
 	if (*head == NULL)
 		return (1);
 	len = list_len(ti);
 	ti = *head;
-	while (i != len)
+	for (i = 0, j = len - 1; i < len; i++, j--)
 	{
-		for (j = 1; j < len; j++)
-		{
-			ti = ti->next;
-		}
-		if (ti->n != ts->n)
+		if (array[i] != array[j])
 		{
 			return (0);
-		}
-		else
-		{
-			ts = ts->next;
-			if (ti == ts)
-				break;
-			ti = *head;
-			len--;
-			i++;
 		}
 	}
 	return (1);
