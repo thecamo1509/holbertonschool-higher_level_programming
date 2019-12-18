@@ -28,7 +28,12 @@ int is_palindrome(listint_t **head)
 	if (*head == NULL)
 		return (1);
 	len = list_len(ti);
-	ti = *head;
+	for (i = 0; i < len; i++)
+	{
+		array[i] = ti->n;
+		ti = ti->next;
+	}
+	i = 0;
 	for (i = 0, j = len - 1; i < len; i++, j--)
 	{
 		if (array[i] != array[j])
