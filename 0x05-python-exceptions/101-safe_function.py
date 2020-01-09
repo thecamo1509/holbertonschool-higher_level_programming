@@ -10,3 +10,5 @@ def safe_function(fct, *args):
         print("Exception: {}".format(zero), file=stderr)
     except IndexError as index:
         print("Exception: {}".format(index), file=stderr)
+    except (ValueError, TypeError) as mistake:
+        print("Exception: {}".format(mistake), file=stderr)
