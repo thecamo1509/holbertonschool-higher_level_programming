@@ -6,9 +6,5 @@ def safe_function(fct, *args):
     try:
         result = fct(args[0], args[1])
         return(result)
-    except ZeroDivisionError as zero:
+    except Exception as mistake:
         print("Exception: {}".format(zero), file=stderr)
-    except IndexError as index:
-        print("Exception: {}".format(index), file=stderr)
-    except (ValueError, TypeError) as mistake:
-        print("Exception: {}".format(mistake), file=stderr)
