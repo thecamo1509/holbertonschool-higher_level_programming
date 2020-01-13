@@ -1,0 +1,36 @@
+======================
+5.text_indentation module
+======================
+
+Import module:
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Function:
+=======.
+A function that a function that prints a text with 2 new lines
+after each of these characters: ., ? and :
+Operations:
+=========
+text must be a string, otherwise raise a TypeError exception with the message text must be a string
+There should be no space at the beginning or at the end of each printed line
+
+* Text must be a string, otherwise raise a TypeError exception
+>>> text_indentation(34534)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+* Text with . ? : should print two newlines after
+>>> text_indentation("Hell.")
+Hell.
+<BLANKLINE>
+
+* Text with . ? : should print two newlines after
+>>> text_indentation("Hell?")
+Hell?
+<BLANKLINE>
+
+* Text with . ? : should print two newlines after
+>>> text_indentation("  Hell:")
+Hell:
+<BLANKLINE>
