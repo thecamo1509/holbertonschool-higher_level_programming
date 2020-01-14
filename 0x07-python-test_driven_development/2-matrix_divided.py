@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def matrix_divided(matrix, div):
     error1 = "matrix must be a matrix (list of lists) of integers/floats"
     error2 = "Each row of the matrix must have the same size"
