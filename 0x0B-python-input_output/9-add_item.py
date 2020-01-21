@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python3
 import json
 import sys
 save_to_json = __import__('7-save_to_json_file').save_to_json_file
