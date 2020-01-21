@@ -4,7 +4,7 @@ def read_lines(filename="", nb_lines=0):
         if nb_lines > len(f.readlines()):
             f.seek(0)
             print(f.read(), end="")
-        if nb_lines <= 0:
+        elif nb_lines <= 0:
             f.seek(0)
             print(f.read(), end="")
         else:
