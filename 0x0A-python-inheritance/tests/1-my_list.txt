@@ -48,3 +48,8 @@ Operations:
     >>> numeros = My_list([None])
     >>> print(numeros)
     [None]
+
+'numeros' instancion empty:
+    >>> numeros = My_list()
+    >>> print(numeros)
+    []
