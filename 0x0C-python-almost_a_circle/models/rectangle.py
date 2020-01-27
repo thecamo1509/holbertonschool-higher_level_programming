@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 """ Rectangle """
+
+
 from models.base import Base
 
 
 class Rectangle(Base):
+    """ Rectangle """
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Initializing """
         mydict = {"width": width, "height": height, "x": x, "y": y}
