@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 import json
+""" Json module """
 import csv
+""" CSV module to be able to serialize """
 
 
 class Base:
+    """ Base """
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """ Init method """
         if id is not None:
             self.id = id
         else:
@@ -15,6 +19,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """ To json object """
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         else:
@@ -22,6 +27,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """ Saving Json """
         with open("{}.json".format(cls.__name__), "w") as f:
             if list_objs is None:
                 return []
@@ -34,6 +40,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """ From json file """
         if json_string is None or len(json_string) == 0:
             return []
         else:
@@ -41,12 +48,14 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        """ Create instances """
         dummy = cls(1, 5)
         dummy.update(**dictionary)
         return dummy
 
     @classmethod
     def load_from_file(cls):
+        """ Loading from file """
         try:
             mylist = []
             with open("{}.json".format(cls.__name__), "r") as f:
@@ -61,14 +70,15 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """ Saving csv """
         with open("{}.csv".format(cls.__name__), "w") as f:
             file = csv.writer(f)
-            for i in list_objs:
-                file.writerow(i)
+            file.writerow(list_objs)
             return file
 
     @classmethod
     def load_from_file_csv(cls):
+        """ Loading CSV """
         mylist = []
         with open("{}.csv".format(cls.__name__), "r") as f:
             file = csv.reader(f)
