@@ -34,9 +34,9 @@ class Base:
                 for obj in list_objs:
                     mydict = obj.to_dictionary()
                     newlist.append(mydict)
-                return f.write(cls.to_json_string(newlist))
+                f.write(cls.to_json_string(newlist))
             else:
-                return newlist
+                f.write(cls.to_json_string(newlist))
 
     @staticmethod
     def from_json_string(json_string):
