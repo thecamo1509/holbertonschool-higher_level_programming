@@ -29,14 +29,14 @@ class Base:
     def save_to_file(cls, list_objs):
         """ Saving Json """
         with open("{}.json".format(cls.__name__), "w") as f:
-            if list_objs is None:
-                return []
-            else:
-                newlist = []
+            newlist = []
+            if list_objs is not None:
                 for obj in list_objs:
                     mydict = obj.to_dictionary()
                     newlist.append(mydict)
                 return f.write(cls.to_json_string(newlist))
+            else:
+                return newlist
 
     @staticmethod
     def from_json_string(json_string):
