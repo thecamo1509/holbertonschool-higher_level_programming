@@ -71,7 +71,7 @@ class Rectangle(Base):
             if type(value) != int:
                 raise TypeError("{} must be an integer".format(key))
             elif value <= 0 and (key != "x" and key != "y"):
-                raise ValueError("{}  must be > 0".format(key))
+                raise ValueError("{} must be > 0".format(key))
             elif value < 0 and (key != "width" and key != "height"):
                 raise ValueError("{} must be >= 0".format(key))
 
