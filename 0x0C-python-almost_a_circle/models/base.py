@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+import csv
 
 
 class Base:
@@ -40,6 +41,37 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        dummy = cls(10, 5, 5, 5, 5)
+        dummy = cls(1, 5)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        try:
+            mylist = []
+            with open("{}.json".format(cls.__name__), "r") as f:
+                file = f.read()
+                read = cls.from_json_string(file)
+                for i in read:
+                    dummy = cls.create(**i)
+                    mylist.append(dummy)
+                return mylist
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        with open("{}.csv".format(cls.__name__), "w") as f:
+            file = csv.writer(f)
+            for i in list_objs:
+                file.writerow(i)
+            return file
+
+    @classmethod
+    def load_from_file_csv(cls):
+        mylist = []
+        with open("{}.csv".format(cls.__name__), "r") as f:
+            file = csv.reader(f)
+            for i in file:
+                mylist.append(i)
+            return mylist
