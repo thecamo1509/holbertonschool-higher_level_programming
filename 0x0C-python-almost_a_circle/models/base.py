@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+""" Base Class """
+
+
 import json
-""" Json module """
 import csv
-""" CSV module to be able to serialize """
 
 
 class Base:
