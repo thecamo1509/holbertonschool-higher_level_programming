@@ -49,7 +49,10 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ Create instances """
-        dummy = cls(1, 5)
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 5)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
 
