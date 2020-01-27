@@ -3,6 +3,7 @@
 
 
 import json
+import turtle
 
 
 class Base:
@@ -98,3 +99,50 @@ class Base:
                 return mylist
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        turtle.color('#EB0045')
+        ms = "Hello, this is rectangle drawing"
+        font = "Courier"
+        turtle.write(ms, move=False, align="center", font=(font, 30, "normal"))
+        turtle.delay(200)
+        turtle.up()
+        turtle.goto(0, -20)
+        turtle.forward(100)
+        turtle.clear()
+        turtle.up()
+        turtle.pensize(4)
+        turtle.delay(0)
+        for obj in list_rectangles:
+            mydict = obj.to_dictionary()
+            turtle.goto(mydict["x"], mydict["y"])
+            turtle.down()
+            for i in range(2):
+                turtle.forward(mydict["width"])
+                turtle.left(90)
+                turtle.forward(mydict["height"])
+                turtle.left(90)
+            turtle.up()
+        turtle.clear()
+        ms = "Now, let's take a look at the Squares"
+        font = "Courier"
+        turtle.goto(0, 0)
+        turtle.write(ms, move=False, align="center", font=(font, 30, "normal"))
+        turtle.delay(200)
+        turtle.up()
+        turtle.goto(0, -20)
+        turtle.forward(100)
+        turtle.clear()
+        turtle.up()
+        turtle.pensize(4)
+        turtle.delay(0)
+        for obj in list_squares:
+            mydict = obj.to_dictionary()
+            turtle.goto(mydict["x"], mydict["y"])
+            turtle.down()
+            for i in range(4):
+                turtle.forward(mydict["size"])
+                turtle.left(90)
+            turtle.up()
+        turtle.exitonclick()
