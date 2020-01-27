@@ -3,7 +3,6 @@
 
 
 import json
-import csv
 
 
 class Base:
@@ -73,16 +72,26 @@ class Base:
     def save_to_file_csv(cls, list_objs):
         """ Saving csv """
         with open("{}.csv".format(cls.__name__), "w") as f:
-            file = csv.writer(f)
-            file.writerow(list_objs)
-            return file
+            if list_objs is None:
+                return []
+            else:
+                newlist = []
+                for obj in list_objs:
+                    mydict = obj.to_dictionary()
+                    newlist.append(mydict)
+                return f.write(cls.to_json_string(newlist))
 
     @classmethod
     def load_from_file_csv(cls):
         """ Loading CSV """
-        mylist = []
-        with open("{}.csv".format(cls.__name__), "r") as f:
-            file = csv.reader(f)
-            for i in file:
-                mylist.append(i)
-            return mylist
+        try:
+            mylist = []
+            with open("{}.csv".format(cls.__name__), "r") as f:
+                file = f.read()
+                read = cls.from_json_string(file)
+                for i in read:
+                    dummy = cls.create(**i)
+                    mylist.append(dummy)
+                return mylist
+        except FileNotFoundError:
+            return []
