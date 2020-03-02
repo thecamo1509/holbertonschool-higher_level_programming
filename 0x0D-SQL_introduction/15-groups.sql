@@ -5,4 +5,5 @@ SELECT
 FROM
     second_table
 GROUP BY score
+ORDER BY score DESC
 HAVING COUNT(score) >= 1;
