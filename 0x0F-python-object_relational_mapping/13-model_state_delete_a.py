@@ -16,4 +16,4 @@ if __name__ == "__main__":
         name = i.name
         if 'a' in name:
             session.delete(i)
-            session.commit()
+    session.commit()
