@@ -14,6 +14,6 @@ if __name__ == "__main__":
     result = session.query(State).order_by(State.id)
     for i in result:
         if sys.argv[4] in i.name:
-            print(str(i.id) + ": " + i.name)
+            print(str(i.id))
             exit()
     print("Not found")
