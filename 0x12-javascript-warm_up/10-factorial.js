@@ -1,15 +1,11 @@
 #!/usr/bin/node
-function fact (a, b) {
-  if (a === 1) {
-    return b;
+function fact (num) {
+  if (num === 0 || isNaN(num)) {
+    return 1;
   }
-  b *= a;
-  return fact(--a, b);
+  return num * fact(--num);
 }
 
-const num = parseInt(process.argv[2]);
-if (isNaN(num)) {
-  console.log(1);
-} else {
-  console.log(fact(num, 1));
-}
+const num = parseInt(process.argv[2], 10);
+const result = fact(num);
+console.log(result);
