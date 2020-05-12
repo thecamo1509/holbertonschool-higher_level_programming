@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const Argv = process.argv.slice(2)
+const Argv = process.argv.slice(2);
 const request = require('request');
 const mydict = {};
 request.get(Argv[0], function (err, response, body) {
