@@ -1,9 +1,16 @@
 #!/usr/bin/node
 const request = require('request');
-request('https://swapi-api.hbtn.io/api/people/18', function (error, response, body) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(JSON.parse(body).films.length);
+const url = process.argv[2];
+request.get(url, (error, response, body) => {
+  if (error) { console.log(error); } else {
+    const film = JSON.parse(body).results;
+    let count = 0;
+    film.forEach(element => {
+      const characters = element.characters;
+      characters.forEach(character => {
+        if (character.includes('18')) { count++; }
+      });
+    });
+    console.log(count);
   }
 });
